@@ -1,3 +1,5 @@
+//Token.java
+
 package tokens;
 
 import java.io.BufferedWriter;
@@ -29,5 +31,16 @@ public abstract class Token implements IToken {
 	@Override
 	public void write(BufferedWriter writer) throws IOException {
 		writer.write(word);
+	}
+	@Override
+	public boolean equals(Object o) {
+	    if (o == this) {
+	      return true;
+	    }
+	    if (o.getClass() != this.getClass()) {
+	      return false;
+	    }
+	    Token t = (Token)o;
+	    return word.equals(t.word);
 	}
 }

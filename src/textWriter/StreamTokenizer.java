@@ -95,8 +95,9 @@ public class StreamTokenizer {
     private InputStream inStream;
     private Reader inReader;
     private int peekChar = -2;
-    // added by Mikal Ziane. Not the current char unfortunately so not so useful it seems
-    // the problem is that ttype does not always contain the current char even 
+    // peek() is added by Mikal Ziane. Not the current char unfortunately
+    // so not so useful.  It seems that the problem is that
+    // ttype does not always contain the current char even 
     // for tokens of a single char such as a lone '.' that is interpreted as a number!
     public int peek() { return peekChar;}
     /**
@@ -111,7 +112,10 @@ public class StreamTokenizer {
          */
         wordChars('A', 'Z');
         wordChars('a', 'z');
-        wordChars(160, 255);
+        // Mikal Ziane 
+        // I have removed chars with diacritic signs as they are not supposed
+        // to appear in words in the texts I am interested in: matlab and kendrick source code 
+        //wordChars(160, 255);
         /**
          * All byte values '\u0000' through '\u0020' are considered to be white
          * space.
@@ -325,7 +329,11 @@ public class StreamTokenizer {
                 word.append((char) currentChar);
                 currentChar = read();
                 if (currentChar == -1
-                        || (currentChar < 256 && (tokenTypes[currentChar] & (TOKEN_WORD | TOKEN_DIGIT)) == 0)) {
+                        || (currentChar < 256 && (tokenTypes[currentChar] & (TOKEN_WORD | TOKEN_DIGIT)) == 0)
+                        // the line below has been added by Mikal Ziane
+                        // to avoid to consider words with '-' or '.' inside
+                        || (currentChar == '-')
+                        || (currentChar == '.')) {
                     break;
                 }
             }
