@@ -47,21 +47,20 @@ public class Main {
 		System.out.println("Text Writer");
 		String codeDir = "D:\\Dropbox\\temporaire\\essais highlighting\\";
 		String concernsDir = codeDir + "concerns\\";
-		String names[] = {"SEIRS", "spatial", "multispecies", "matlab"};
-		String colors[] = {"DARKORANGE", "DEEPSKYBLUE", "PINK", "LIME"};
+		String names[] = {"SEIRS", "spatial", "multispecies", "matlab",
+				"seirs_spatial", "seirs_species", "species_spatial" };
+		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY",
+				"BLUE", "PALEGREEN", "ORANGE"};
 		for (int i=0; i< names.length; ++i) {
 			Path ipath = Paths.get(concernsDir + names[i] + ".txt");
-			Path opath = Paths.get(concernsDir + names[i] + "rw.txt");
-			addConcern(names[i], colors[i], ipath, opath);
+			addConcern(names[i], colors[i], ipath);
 		}
 		
 		Path codePath = Paths.get(codeDir +  "script3.m");
 		// Path codePath = Paths.get(codeDir +  "essai.txt");
-		Path rwPath = Paths.get(codeDir + "rewritten.txt");
 		Path wcPath = Paths.get(codeDir + "withConcerns.txt");
 		Path colorPath = Paths.get(codeDir + "colorized.html");
 		List<IToken> tokens = tokenize(codePath,false);
-		write(tokens, rwPath, false);
 		List<IToken> tokensWithConcerns = detectConcerns(tokens, concerns);
 		write(tokensWithConcerns, wcPath, false);
 		colorize(tokens, colorPath);
@@ -122,9 +121,8 @@ public class Main {
 		}
 	}
 	
-	private static void addConcern(String name, String color, Path ipath, Path opath) throws IOException {
+	private static void addConcern(String name, String color, Path ipath) throws IOException {
 		List<IToken> tokens = tokenize(ipath, true);
-		write(tokens, opath, true);
 		concerns.add(new Concern(name, color, tokens));
 	}
 
