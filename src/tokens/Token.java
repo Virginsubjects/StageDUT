@@ -5,22 +5,17 @@ package tokens;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import textWriter.IToken;
+import concernSlicer.IToken;
 
 public abstract class Token implements IToken {
 	private String word;
 	
-	protected void setWord(String word) {
-		this.word = word;
+	protected String getWord() {
+		return word;
 	}
 
 	public Token(String word) {
 		this.word = word;
-	}
-	
-	@Override
-	public String getText() {
-		return word;
 	}
 	
 	@Override
@@ -34,12 +29,8 @@ public abstract class Token implements IToken {
 	}
 	@Override
 	public boolean equals(Object o) {
-	    if (o == this) {
-	      return true;
-	    }
-	    if (o.getClass() != this.getClass()) {
+	    if (o.getClass() != this.getClass())
 	      return false;
-	    }
 	    Token t = (Token)o;
 	    return word.equals(t.word);
 	}

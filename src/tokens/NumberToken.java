@@ -5,10 +5,11 @@ import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class NumberToken extends Token {
+import concernSlicer.IToken;
+
+public class NumberToken implements IToken {
 	private double number;
 	public NumberToken(double number) {
-		super("");
 		this.number = number;
 	}
 	@Override

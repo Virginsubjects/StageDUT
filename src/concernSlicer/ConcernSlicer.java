@@ -1,4 +1,4 @@
-package textWriter;
+package concernSlicer;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Locale;
 
 import tokens.CharToken;
-import tokens.ConcernToken;
 import tokens.LayoutToken;
 import tokens.NumberToken;
 import tokens.WordToken;
@@ -20,7 +19,7 @@ import tokens.WordToken;
 
 // TODO assign lambda. correctly to SEIRS despite the point after it
 
-public class Main {
+public class ConcernSlicer {
 	private static List<Concern> concerns = new ArrayList<>();
 	private static String nl = System.lineSeparator();
 	
@@ -40,31 +39,44 @@ public class Main {
 				"</body>" 		+ nl +
 				"</html>" 		+ nl;
 	}
-
+	
 	public static void main(String[] args) throws IOException {
 		NumberFormat nf = NumberFormat.getInstance(Locale.US);
 		nf.setMaximumFractionDigits(100);
-		System.out.println("Text Writer");
+		System.out.println("Concern Slicer");
 		String codeDir = "D:\\Dropbox\\EnCours\\Recherche\\essais highlighting\\";
 		String concernsDir = codeDir + "concerns\\";
 		String names[] = {"SEIRS", "spatial", "multispecies", "matlab",
 				"seirs_spatial", "seirs_species", "species_spatial" };
 		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY",
 				"BLUE", "PALEGREEN", "ORANGE"};
+		
 		for (int i=0; i< names.length; ++i) {
 			Path ipath = Paths.get(concernsDir + names[i] + ".txt");
 			addConcern(names[i], colors[i], ipath);
 		}
 		
+		//Path codePath = Paths.get(codeDir +  "Model3.st");
 		Path codePath = Paths.get(codeDir +  "script3.m");
-		// Path codePath = Paths.get(codeDir +  "essai.txt");
-		Path wcPath = Paths.get(codeDir + "withConcerns.txt");
 		Path colorPath = Paths.get(codeDir + "colorized.html");
+		
+		slice(codePath, colorPath);
+		
+		//Path wcPath = Paths.get(codeDir + "withConcerns.txt");
+		//List<IToken> tokensWithConcerns = detectConcerns(tokens, concerns);
+		//write(tokensWithConcerns, wcPath, false);
+		
+	}
+	
+	private static void slice(Path codePath, Path colorPath) throws IOException {
 		List<IToken> tokens = tokenize(codePath,false);
-		List<IToken> tokensWithConcerns = detectConcerns(tokens, concerns);
-		write(tokensWithConcerns, wcPath, false);
 		colorize(tokens, colorPath);
+		
+	}
 
+	private static void addConcern(String name, String color, Path ipath) throws IOException {
+		List<IToken> tokens = tokenize(ipath, true);
+		concerns.add(new Concern(name, color, tokens));
 	}
 	
 	public static List<IToken> detectConcerns(List<IToken>  tokens, List<Concern> concerns) {
@@ -73,7 +85,7 @@ public class Main {
 		tokensWithConcerns.add(ct);
 		for (IToken token : tokens) {
 			ConcernToken newct = assignConcernToToken(token, concerns);
-			if (! newct.getText().equals(ct.getText())) {
+			if (!newct.equals(ct)) {
 				tokensWithConcerns.add(newct);
 				ct = newct;
 			}
@@ -89,7 +101,7 @@ public class Main {
 			ct.openColorMark(writer);
 			for(IToken token : tokens) {
 				ConcernToken newct = assignConcernToToken(token, concerns);
-				if (! newct.getText().equals(ct.getText())) {
+				if (!newct.equals(ct)) {
 					ct.closeColorMark(writer);
 					ct = newct;
 					ct.openColorMark(writer);
@@ -120,11 +132,7 @@ public class Main {
 			}
 		}
 	}
-	
-	private static void addConcern(String name, String color, Path ipath) throws IOException {
-		List<IToken> tokens = tokenize(ipath, true);
-		concerns.add(new Concern(name, color, tokens));
-	}
+
 
 	public static List<IToken> tokenize(Path ipath, boolean ignoreLayout)  throws IOException{
 	   List<IToken> tokens = new ArrayList<>();
@@ -156,4 +164,8 @@ public class Main {
 		 } while (!eof);
 		 return tokens;
    }
+
+	public static int getIntertwining(List<IToken> tokensWithConcerns) {
+		return 0;
+	}
 }

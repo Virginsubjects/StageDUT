@@ -1,4 +1,4 @@
-package textWriter;
+package concernSlicer;
 
 import java.io.IOException;
 import java.io.InputStream;

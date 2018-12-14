@@ -3,17 +3,14 @@ package tokens;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-import textWriter.IToken;
+import concernSlicer.IToken;
 
 public class LayoutToken implements IToken {
 	private char c;
 	public LayoutToken(char c) {
 		this.c = c;
 	}
-	@Override
-	public String getText() {
-		return ""+c;
-	}
+
 	@Override
 	public void write(BufferedWriter writer) throws IOException {
 		String s;
@@ -24,9 +21,6 @@ public class LayoutToken implements IToken {
 	}
 	@Override
 	public boolean equals(Object o) {
-	    if (o == this) {
-	      return true;
-	    }
 	    if (o.getClass() != this.getClass()) {
 	      return false;
 	    }

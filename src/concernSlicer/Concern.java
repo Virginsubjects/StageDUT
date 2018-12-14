@@ -1,4 +1,4 @@
-package textWriter;
+package concernSlicer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,7 +8,6 @@ public class Concern implements Iterable<IToken>{
 	private String name;
 	private String color;
 	private List<IToken> tokens = new ArrayList<>();
-	
 
 	public Concern(String name, String color, List<IToken> tokens) {
 		this.name = name;
@@ -18,10 +17,6 @@ public class Concern implements Iterable<IToken>{
 	
 	public String getName() { 
 		return name;
-	}
-	
-	public boolean includes(IToken token) {
-		return tokens.contains(token);
 	}
 
 	@Override
@@ -36,5 +31,4 @@ public class Concern implements Iterable<IToken>{
 	public String getColor() {
 		return color;
 	}
-
 }

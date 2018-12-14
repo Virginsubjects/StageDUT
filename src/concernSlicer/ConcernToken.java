@@ -1,7 +1,9 @@
-package tokens;
+package concernSlicer;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+
+import tokens.Token;
 
 public class ConcernToken extends Token {
 	private String color;
@@ -14,7 +16,7 @@ public class ConcernToken extends Token {
 	}
 	@Override
 	public void write(BufferedWriter writer) throws IOException {
-		writer.write("@"+getText().charAt(0));
+		writer.write("@"+getWord().charAt(0));
 	}
 	public void openColorMark(BufferedWriter writer) throws IOException {
 		writer.write("<span style=\"background-color: " + color +"\""+ ">");
