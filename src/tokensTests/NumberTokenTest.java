@@ -1,8 +1,10 @@
-package tokens;
+package tokensTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+
+import tokens.NumberToken;
 
 class NumberTokenTest {
 

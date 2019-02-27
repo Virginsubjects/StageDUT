@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -22,6 +23,7 @@ import tokens.WordToken;
 public class ConcernSlicer {
 	private static List<Concern> concerns = new ArrayList<>();
 	private static String nl = System.lineSeparator();
+	private static boolean trace = false;
 	
 	private static String getHTMLHeader(String title) {
 		return 
@@ -41,15 +43,18 @@ public class ConcernSlicer {
 	}
 	
 	public static void main(String[] args) throws IOException {
+		Arrays.sort(args);
+		if (Arrays.binarySearch(args, "trace") != -1)
+			trace = true;
 		NumberFormat nf = NumberFormat.getInstance(Locale.US);
 		nf.setMaximumFractionDigits(100);
 		System.out.println("Concern Slicer");
 		String codeDir = "D:\\Dropbox\\EnCours\\Recherche\\essais highlighting\\";
 		String concernsDir = codeDir + "concerns\\";
 		String names[] = {"SEIRS", "spatial", "multispecies", "matlab",
-				"seirs_spatial", "seirs_species", "species_spatial" };
+				"seirs_spatial", "seirs_species", "species_spatial", "kendrick" };
 		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY",
-				"BLUE", "PALEGREEN", "ORANGE"};
+				"PALEGREEN", "ORANGE", "DARKVIOLET", "LIGHTGRAY" };
 		
 		for (int i=0; i< names.length; ++i) {
 			Path ipath = Paths.get(concernsDir + names[i] + ".txt");
@@ -57,8 +62,10 @@ public class ConcernSlicer {
 		}
 		
 		//Path codePath = Paths.get(codeDir +  "Model3.st");
+		//Path colorPath = Paths.get(codeDir + "Kcolorized.html");
 		Path codePath = Paths.get(codeDir +  "script3.m");
-		Path colorPath = Paths.get(codeDir + "colorized.html");
+		Path colorPath = Paths.get(codeDir + "Mcolorized.html");
+
 		
 		slice(codePath, colorPath);
 		
@@ -71,11 +78,15 @@ public class ConcernSlicer {
 	private static void slice(Path codePath, Path colorPath) throws IOException {
 		List<IToken> tokens = tokenize(codePath,false);
 		colorize(tokens, colorPath);
-		
 	}
 
 	private static void addConcern(String name, String color, Path ipath) throws IOException {
 		List<IToken> tokens = tokenize(ipath, true);
+		if (trace) {
+			System.out.println("Added concern "+name+ " " + color+ " "+ ipath);
+			for(IToken token : tokens)
+				System.out.println(token);
+		}
 		concerns.add(new Concern(name, color, tokens));
 	}
 	
@@ -119,6 +130,12 @@ public class ConcernSlicer {
 				return new ConcernToken(concern.getName(), concern.getColor());
 		return ConcernToken.getGenericCT();
 	}
+	
+	private static void writeLineNumber(int n, BufferedWriter writer) throws IOException {
+		new NumberToken(n).write(writer);
+		new CharToken(' ').write(writer);
+		
+	}
 
 	private static void write(List<IToken> tokens, Path outPath, boolean insertEOLs) throws IOException {
 		try (BufferedWriter writer = Files.newBufferedWriter(outPath, StandardCharsets.UTF_8)) {
@@ -133,7 +150,8 @@ public class ConcernSlicer {
 		}
 	}
 
-
+// layout is typically ignored when tokenize is called
+// to add a concern : only non-layout tokens matter
 	public static List<IToken> tokenize(Path ipath, boolean ignoreLayout)  throws IOException{
 	   List<IToken> tokens = new ArrayList<>();
 	   StreamTokenizer st = new StreamTokenizer(Files.newBufferedReader(ipath));
