@@ -1,4 +1,4 @@
-# textWriter
+# Concern Slicer
 
 This application aims at measuring separation of concerns in texts, typically programs.
 The first feature consists in colorizing texts using one color per concern.
