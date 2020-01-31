@@ -46,6 +46,7 @@ public class ConcernSlicer {
 		Arrays.sort(args);
 		if (Arrays.binarySearch(args, "trace") != -1)
 			trace = true;
+		
 		NumberFormat nf = NumberFormat.getInstance(Locale.US);
 		nf.setMaximumFractionDigits(100);
 		System.out.println("Concern Slicer");
@@ -185,5 +186,9 @@ public class ConcernSlicer {
 
 	public static int getIntertwining(List<IToken> tokensWithConcerns) {
 		return 0;
+	}
+
+	public static void setTrace(boolean b) {
+		trace = b;
 	}
 }
