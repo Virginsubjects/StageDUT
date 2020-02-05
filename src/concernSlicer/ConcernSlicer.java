@@ -1,6 +1,7 @@
 package concernSlicer;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -25,6 +26,11 @@ public class ConcernSlicer {
 	private static String nl = System.lineSeparator();
 	private static boolean trace = false;
 	
+	static {
+		NumberFormat nf = NumberFormat.getInstance(Locale.US);
+		nf.setMaximumFractionDigits(100);
+	}
+	
 	private static String getHTMLHeader(String title) {
 		return 
 			"<!DOCTYPE html>" 	+ nl +
@@ -42,6 +48,12 @@ public class ConcernSlicer {
 				"</html>" 		+ nl;
 	}
 	
+	public static void colorize (File file) {
+		String filename = file.getAbsolutePath();
+		String codeDir = file.getParentFile().getAbsolutePath();
+		String colorized = filename + ".colorized.html";
+	}
+	
 	public static void main(String[] args) throws IOException {
 		Arrays.sort(args);
 		if (Arrays.binarySearch(args, "trace") != -1)
@@ -49,7 +61,9 @@ public class ConcernSlicer {
 		
 		NumberFormat nf = NumberFormat.getInstance(Locale.US);
 		nf.setMaximumFractionDigits(100);
+		
 		System.out.println("Concern Slicer");
+		
 		String codeDir = "D:\\Dropbox\\EnCours\\Recherche\\essais highlighting\\";
 		String concernsDir = codeDir + "concerns\\";
 		String names[] = {"SEIRS", "spatial", "multispecies", "matlab",
