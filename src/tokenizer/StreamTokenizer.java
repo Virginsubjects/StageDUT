@@ -1,4 +1,4 @@
-package concernSlicer;
+package tokenizer;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -150,7 +150,7 @@ public class StreamTokenizer {
      *             if {@code is} is {@code null}.
      * @deprecated Use {@link #StreamTokenizer(Reader)}
      */
-    @Deprecated
+ /*  @Deprecated
     public StreamTokenizer(InputStream is) {
         this();
         if (is == null) {
@@ -158,6 +158,7 @@ public class StreamTokenizer {
         }
         inStream = is;
     }
+ */
     /**
      * Constructs a new {@code StreamTokenizer} with {@code r} as source reader.
      * The tokenizer's initial state is as follows:

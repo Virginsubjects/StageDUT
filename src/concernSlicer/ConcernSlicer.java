@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import tokenizer.StreamTokenizer;
 import tokens.CharToken;
 import tokens.LayoutToken;
 import tokens.NumberToken;
@@ -48,24 +49,12 @@ public class ConcernSlicer {
 				"</html>" 		+ nl;
 	}
 	
-	public static void colorize (File file) {
+	public static void colorize (File file) throws IOException {
 		String filename = file.getAbsolutePath();
 		String codeDir = file.getParentFile().getAbsolutePath();
 		String colorized = filename + ".colorized.html";
-	}
-	
-	public static void main(String[] args) throws IOException {
-		Arrays.sort(args);
-		if (Arrays.binarySearch(args, "trace") != -1)
-			trace = true;
-		
-		NumberFormat nf = NumberFormat.getInstance(Locale.US);
-		nf.setMaximumFractionDigits(100);
-		
-		System.out.println("Concern Slicer");
-		
-		String codeDir = "D:\\Dropbox\\EnCours\\Recherche\\essais highlighting\\";
 		String concernsDir = codeDir + "concerns\\";
+		
 		String names[] = {"SEIRS", "spatial", "multispecies", "matlab",
 				"seirs_spatial", "seirs_species", "species_spatial", "kendrick" };
 		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY",
@@ -76,6 +65,20 @@ public class ConcernSlicer {
 			addConcern(names[i], colors[i], ipath);
 		}
 		
+		Path codePath = Paths.get(filename);
+		Path colorPath = Paths.get(colorized);
+		
+		slice(codePath, colorPath);
+	}
+	/*
+	public static void main(String[] args) throws IOException {
+		
+		System.out.println("Concern Slicer");
+		
+		//String codeDir = "D:\\Dropbox\\EnCours\\Recherche\\essais highlighting\\";
+		//String concernsDir = codeDir + "concerns\\";
+
+			
 		//Path codePath = Paths.get(codeDir +  "Model3.st");
 		//Path colorPath = Paths.get(codeDir + "Kcolorized.html");
 		Path codePath = Paths.get(codeDir +  "script3.m");
@@ -89,6 +92,7 @@ public class ConcernSlicer {
 		//write(tokensWithConcerns, wcPath, false);
 		
 	}
+	*/
 	
 	private static void slice(Path codePath, Path colorPath) throws IOException {
 		List<IToken> tokens = tokenize(codePath,false);
