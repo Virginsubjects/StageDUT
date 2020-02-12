@@ -10,6 +10,10 @@ public class LayoutToken implements IToken {
 	public LayoutToken(char c) {
 		this.c = c;
 	}
+	@Override
+	public String getString() {
+		return ""+c;
+	}
 
 	@Override
 	public void write(BufferedWriter writer) throws IOException {

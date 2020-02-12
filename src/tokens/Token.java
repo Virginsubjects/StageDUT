@@ -9,13 +9,18 @@ import concernSlicer.IToken;
 
 public abstract class Token implements IToken {
 	private String word;
-	
-	protected String getWord() {
-		return word;
-	}
 
 	public Token(String word) {
 		this.word = word;
+	}
+	
+	public String getWord() {
+		return word;
+	}
+	
+	@Override
+	public String getString() {
+		return word;
 	}
 	
 	@Override
@@ -27,6 +32,7 @@ public abstract class Token implements IToken {
 	public void write(BufferedWriter writer) throws IOException {
 		writer.write(word);
 	}
+	
 	@Override
 	public boolean equals(Object o) {
 	    if (o.getClass() != this.getClass())

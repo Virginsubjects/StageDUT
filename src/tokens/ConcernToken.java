@@ -1,9 +1,7 @@
-package concernSlicer;
+package tokens;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
-
-import tokens.Token;
 
 public class ConcernToken extends Token {
 	private String color;
@@ -13,6 +11,10 @@ public class ConcernToken extends Token {
 	}
 	public static ConcernToken getGenericCT() {
 		return new ConcernToken("generic", "white");
+	}
+	@Override
+	public String getString() {
+		return "@"+getWord().charAt(0);
 	}
 	@Override
 	public void write(BufferedWriter writer) throws IOException {

@@ -5,4 +5,7 @@ import java.io.IOException;
 
 public interface IToken {
 	void write(BufferedWriter writer) throws IOException;
+	default String getString() {
+		return toString();
+	}
 }

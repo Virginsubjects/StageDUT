@@ -8,7 +8,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class ConcernSlicerTest {
-
 	@Test
 	void test() {
 		List<IToken> tokensWithConcerns = null; // assign !

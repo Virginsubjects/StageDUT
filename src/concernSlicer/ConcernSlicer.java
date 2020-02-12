@@ -15,6 +15,7 @@ import java.util.Locale;
 
 import tokenizer.StreamTokenizer;
 import tokens.CharToken;
+import tokens.ConcernToken;
 import tokens.LayoutToken;
 import tokens.NumberToken;
 import tokens.WordToken;
@@ -51,7 +52,7 @@ public class ConcernSlicer {
 	
 	public static void colorize (File file) throws IOException {
 		String filename = file.getAbsolutePath();
-		String codeDir = file.getParentFile().getAbsolutePath();
+		String codeDir = file.getParentFile().getAbsolutePath()+"\\";
 		String colorized = filename + ".colorized.html";
 		String concernsDir = codeDir + "concerns\\";
 		
