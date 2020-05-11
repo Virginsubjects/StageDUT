@@ -61,39 +61,42 @@ public class ConcernSlicer {
 		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY",
 				"PALEGREEN", "ORANGE", "DARKVIOLET", "LIGHTGRAY" };
 		
-		for (int i=0; i< names.length; ++i) {
-			Path ipath = Paths.get(concernsDir + names[i] + ".txt");
-			addConcern(names[i], colors[i], ipath);
-		}
+		
 		
 		Path codePath = Paths.get(filename);
 		Path colorPath = Paths.get(colorized);
 		
 		slice(codePath, colorPath);
 	}
-	/*
+	
 	public static void main(String[] args) throws IOException {
 		
 		System.out.println("Concern Slicer");
 		
-		//String codeDir = "D:\\Dropbox\\EnCours\\Recherche\\essais highlighting\\";
+		String codeDir = "C:\\Users\\rober\\OneDrive\\Bureau\\PROJET_STAGE\\";
 		//String concernsDir = codeDir + "concerns\\";
+		String names[] = {"projet-stage", "colorer", "texte", "programme" }; //Juste pour tester 
+		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY"};
+		for (int i=0; i< names.length; ++i) {
+			Path ipath = Paths.get(codeDir + names[i] + ".txt");
+			addConcern(names[i], colors[i], ipath);
+		}
 
 			
 		//Path codePath = Paths.get(codeDir +  "Model3.st");
 		//Path colorPath = Paths.get(codeDir + "Kcolorized.html");
-		Path codePath = Paths.get(codeDir +  "script3.m");
-		Path colorPath = Paths.get(codeDir + "Mcolorized.html");
+		Path codePath = Paths.get(codeDir +  "README1.txt");
+		Path colorPath = Paths.get(codeDir + "colorized.html"); 
 
 		
 		slice(codePath, colorPath);
 		
-		//Path wcPath = Paths.get(codeDir + "withConcerns.txt");
-		//List<IToken> tokensWithConcerns = detectConcerns(tokens, concerns);
-		//write(tokensWithConcerns, wcPath, false);
+		 Path wcPath = Paths.get(codeDir + "withConcerns.txt");
+		// List<IToken> tokensWithConcerns = detectConcerns(tokens, concerns);
+		 //write(tokensWithConcerns, wcPath, false);
 		
 	}
-	*/
+	
 	
 	private static void slice(Path codePath, Path colorPath) throws IOException {
 		List<IToken> tokens = tokenize(codePath,false);
@@ -130,14 +133,22 @@ public class ConcernSlicer {
 			writer.write(getHTMLHeader(""+outPath.getFileName()));
 			ConcernToken ct = ConcernToken.getGenericCT();
 			ct.openColorMark(writer);
+			int i=1;
+			writeLineNumber(i++, writer);
 			for(IToken token : tokens) {
+				
 				ConcernToken newct = assignConcernToToken(token, concerns);
 				if (!newct.equals(ct)) {
 					ct.closeColorMark(writer);
 					ct = newct;
 					ct.openColorMark(writer);
-				}	
-				token.write(writer);		
+				}
+				if(token.getClass().getSimpleName().equals("LayoutToken")){
+					token.write(writer);
+					writeLineNumber(i++, writer);				
+				}else {
+				token.write(writer);	
+				}
 			}
 			ct.closeColorMark(writer);
 			writer.write(getHTMLEnder());
