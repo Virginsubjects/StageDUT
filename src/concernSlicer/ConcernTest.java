@@ -25,7 +25,11 @@ class ConcernTest {
 		assertTrue(liste.contains(car));
 		assertFalse(liste.contains(cc));
 		assertEquals(liste.size(), 1);
-		
+		liste.remove(car);		
+		assertEquals(liste.size(), 0);
+		assertFalse(liste.contains(car));
+		liste.add(car);
+		assertEquals(liste.size(), 1);
 		liste.add(new ConcernToken("play", "red"));	
 		liste.add(new LayoutToken('b'));
 		liste.add(new NumberToken(2.00));
