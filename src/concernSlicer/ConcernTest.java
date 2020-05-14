@@ -20,9 +20,10 @@ class ConcernTest {
 	void test() {
 		List<IToken> liste = new ArrayList<IToken>();
 		CharToken car = new CharToken('c');
+		CharToken cc = new CharToken('d');
 		liste.add(car);
 		assertTrue(liste.contains(car));
-		assertFalse(!liste.contains(car));
+		assertFalse(liste.contains(cc));
 		assertEquals(liste.size(), 1);
 		
 		liste.add(new ConcernToken("play", "red"));	
