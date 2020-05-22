@@ -14,7 +14,7 @@ class StreamTokenizerTest {
 	@Test
 	void test() throws IOException {
 		StreamTokenizer streamTokenizer = new StreamTokenizer(
-		        new StringReader("Mary had little lambs \n 1 ..."));
+		        new StringReader("Mary had little lambs \n 1 ."));
 		List<String> tokens = new ArrayList<String>();
 		assertEquals(streamTokenizer.TT_EOF,-1);
 		assertEquals(streamTokenizer.TT_EOL,'\n');
@@ -23,7 +23,6 @@ class StreamTokenizerTest {
 		assertEquals(streamTokenizer.peek(),-2);	
 
 		while(streamTokenizer.nextToken() != StreamTokenizer.TT_EOF){
-
 		    if(streamTokenizer.ttype == StreamTokenizer.TT_WORD) {
 		        System.out.println(streamTokenizer.sval);
 		        tokens.add(streamTokenizer.sval);
@@ -37,6 +36,13 @@ class StreamTokenizerTest {
 		}
 		assertEquals(tokens.size(), 5);
 		assertTrue(tokens.contains("Mary"));
+		assertTrue(tokens.contains("had"));
+		assertTrue(tokens.contains("little"));
+		assertTrue(tokens.contains("lambs"));
+		tokens.remove("Mary");
+		assertEquals(tokens.size(), 4);
+		assertFalse(tokens.contains("Mary"));
 		
+	
 	}
 }
