@@ -54,6 +54,10 @@ class StreamTokenizerTest {
 		      t.add(streamTokenizer.sval);	    
 		    }
 		assertEquals(t.size(), 7);
+		assertFalse(t.contains("worth"));
+		assertFalse(t.contains("a"));
+		assertFalse(t.contains("shot"));
+		
 		
 		
 	
