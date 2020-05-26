@@ -68,9 +68,11 @@ public class ConcerSlicerGUI extends JPanel
                 log.append("Opening: " + file.getAbsolutePath() + "." + newline);
                 try {
 					ConcernSlicer.colorize(file);				
-		
-					pane.setPage("file:C:///Users/rober/OneDrive/Bureau/PROJET_STAGE/colorized.html");					
-					//readTextFile(log,file.getParentFile()+"\\colorized.html");
+					String codeDir = "file:"+file.getParentFile().getAbsolutePath();				
+					String colorized = codeDir + "\\colorized.html";
+					System.out.println(colorized);
+					pane.setPage(colorized);				
+				  //readTextFile(log,file.getParentFile()+"\\colorized.html");
 				} catch (IOException e1) {
 					log.append("IOException : "+e1.getMessage()+ newline);
 				}
