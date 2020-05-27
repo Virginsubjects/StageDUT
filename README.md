@@ -26,5 +26,5 @@ inexpected outcomings.
 - On the left screenshot : using Java Swing :thumbsdown:                                
 - On the right screenshot : using a regular navigator (Chrome) :thumbsup: 
 
-Even though it works in a regular navigator like Chrome, we'll face to this point
+Even though it seems to be working well in a regular navigator like Chrome, we'll face to this point
 and focalize all our attention to fix it, in order to displays correctly in our application.
