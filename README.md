@@ -14,7 +14,7 @@ The directory of this file must contain a concerns folder.
 In the concerns folder each file lists the words of each concern, one per line.
 
 When user selects a file, html colorized file shows up on the right from the frame, however
-into this new file where colorized has been carried out, it seems that there would have been some
+into this new file where colorization has been carried out, it seems that there would have been some
 inexpected outcomings.
 
 Even though it works in a regular navigator like Chrome, we'll face to this point
