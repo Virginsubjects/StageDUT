@@ -9,7 +9,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -53,14 +52,19 @@ public class ConcernSlicer {
 	public static void colorize (File file) throws IOException {
 		String filename = file.getAbsolutePath();
 		String codeDir = file.getParentFile().getAbsolutePath()+"\\";
-		String colorized = filename + ".colorized.html";
+		String colorized = codeDir + "colorized.html";
 		String concernsDir = codeDir + "concerns\\";
 		
-		String names[] = {"SEIRS", "spatial", "multispecies", "matlab",
+		/*String names[] = {"SEIRS", "spatial", "multispecies", "matlab",
 				"seirs_spatial", "seirs_species", "species_spatial", "kendrick" };
 		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY",
-				"PALEGREEN", "ORANGE", "DARKVIOLET", "LIGHTGRAY" };
-		
+				"PALEGREEN", "ORANGE", "DARKVIOLET", "LIGHTGRAY" };*/
+		String names[] = {"informatique", "banque-de-données", "documents", "descripteurs","electroniques"}; //Juste pour tester 
+		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY","GREEN"};
+		for (int i=0; i< names.length; ++i) {
+			Path ipath = Paths.get(concernsDir + names[i] + ".txt");
+			addConcern(names[i], colors[i], ipath);
+		}
 		
 		
 		Path codePath = Paths.get(filename);
@@ -69,7 +73,7 @@ public class ConcernSlicer {
 		slice(codePath, colorPath);
 	}
 	
-	public static void main(String[] args) throws IOException {
+	/*public static void main(String[] args) throws IOException {
 		
 		System.out.println("Concern Slicer");
 		
@@ -96,7 +100,7 @@ public class ConcernSlicer {
 		 //write(tokensWithConcerns, wcPath, false);
 		
 	}
-	
+	*/
 	
 	private static void slice(Path codePath, Path colorPath) throws IOException {
 		List<IToken> tokens = tokenize(codePath,false);
@@ -152,7 +156,9 @@ public class ConcernSlicer {
 			}
 			ct.closeColorMark(writer);
 			writer.write(getHTMLEnder());
+			
 		}
+		
 	}
 	
 	private static ConcernToken assignConcernToToken(IToken token, List<Concern> concerns) {
