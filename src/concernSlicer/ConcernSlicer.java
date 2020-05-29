@@ -93,7 +93,7 @@ public class ConcernSlicer {
 		 //write(tokensWithConcerns, wcPath, false);
 		
 	}
-	*/
+	 */
 	
 	private static void slice(Path codePath, Path colorPath) throws IOException {
 		List<IToken> tokens = tokenize(codePath,false);
