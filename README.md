@@ -13,9 +13,18 @@ When the application starts it lets the user browse the local file system so tha
 The directory of this file must contain a concerns folder.
 In the concerns folder each file lists the words of each concern, one per line.
 
+## Quick Overview
+
 When user selects a file, html colorized file shows up on the right from the frame, however
 into this new file where colorization has been carried out, it seems that there would have been some
 inexpected outcomings.
 
-Even though it works in a regular navigator like Chrome, we'll face to this point
+>On the picture down bellow, it show us so far what is going wrong
+ 
+![Overview](https://user-images.githubusercontent.com/56639090/83023498-48963f00-a02d-11ea-9e7f-b1297ad37b0f.png)
+
+- On the left screenshot : using Java Swing (Our GUI) :thumbsdown:                                
+- On the right screenshot : using a regular navigator (Chrome) :thumbsup: 
+
+Even though it seems to be working well in a regular navigator like Chrome, we'll face to this point
 and focalize all our attention to fix it, in order to displays correctly in our application.
