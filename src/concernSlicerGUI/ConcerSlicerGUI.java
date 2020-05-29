@@ -54,7 +54,6 @@ public class ConcerSlicerGUI extends JPanel
         buttonPanel.add(openButton);
         buttonPanel.add(saveButton);
     
-
         //Add the buttons and the log to this panel. ( + pane )
         add(buttonPanel, BorderLayout.PAGE_START);
         add(logScrollPane, BorderLayout.CENTER);
@@ -78,9 +77,9 @@ public class ConcerSlicerGUI extends JPanel
 					ConcernSlicer.colorize(file, list);				
 					String codeDir = "file:"+file.getParentFile().getAbsolutePath();				
 					String colorized = codeDir + "\\colorized.html";					
-				      //System.out.println(colorized);
+				  //System.out.println(colorized);
 					pane.setPage(colorized);				
-				      //readTextFile(log,file.getParentFile()+"\\colorized.html");
+				  //readTextFile(log,file.getParentFile()+"\\colorized.html");
 				} catch (IOException e1) {
 					log.append("IOException : "+e1.getMessage()+ newline);
 				}
