@@ -1,8 +1,14 @@
 package concernSlicerGUI;
 
 import java.io.*;
+import java.io.FileFilter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.Locale;
 import java.awt.*;
 import java.awt.event.*;
@@ -26,8 +32,7 @@ public class ConcerSlicerGUI extends JPanel
     public ConcerSlicerGUI() {
         super(new BorderLayout());
         pane = new JEditorPane();
-        pane.setEditable(true);
-        pane.getDocument().putProperty("IgnoreCharsetDirective", Boolean.TRUE);
+        pane.setContentType("text/html");
         pane.setPreferredSize(new Dimension(400, 400));
         
         log = new JTextArea(20,10);
@@ -35,7 +40,7 @@ public class ConcerSlicerGUI extends JPanel
         log.setEditable(false);
         JScrollPane logScrollPane = new JScrollPane(log);
         JScrollPane paneScrollPane = new JScrollPane(pane);
-        
+  
        //Create a file chooser
         fc = new JFileChooser();
         
@@ -63,14 +68,17 @@ public class ConcerSlicerGUI extends JPanel
             int returnVal = fc.showOpenDialog(ConcerSlicerGUI.this);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
+            	ArrayList<String> list;
                 File file = fc.getSelectedFile();
                 //This is where a real application would open the file.
-                log.append("Opening: " + file.getAbsolutePath() + "." + newline);
+                log.append("Opening: " + file.getAbsolutePath() + "." + newline);       
+                list = listFiles(file);
+                           
                 try {
-					ConcernSlicer.colorize(file);				
+					ConcernSlicer.colorize(file, list);				
 					String codeDir = "file:"+file.getParentFile().getAbsolutePath();				
-					String colorized = codeDir + "\\colorized.html";
-					System.out.println(colorized);
+					String colorized = codeDir + "\\colorized.html";					
+				  //System.out.println(colorized);
 					pane.setPage(colorized);				
 				  //readTextFile(log,file.getParentFile()+"\\colorized.html");
 				} catch (IOException e1) {
@@ -93,6 +101,21 @@ public class ConcerSlicerGUI extends JPanel
             }
             log.setCaretPosition(log.getDocument().getLength());
         }
+    }
+    
+    private ArrayList<String> listFiles(File file){
+    	ArrayList<String> list = new ArrayList();
+    	String[] s = new String[2];
+    	try {
+     	   String concernsDir = file.getParentFile().getAbsolutePath() + "\\concerns";
+			    File repFile = new File(concernsDir);
+				File[] paths = repFile.listFiles();
+				for( File f : paths) 
+					list.add(f.getName());										
+		} catch (Exception e2) {		
+			System.out.println("Inexpected error occured");
+		}
+    	return list;    	
     }
 
     /** Returns an ImageIcon, or null if the path was invalid. */

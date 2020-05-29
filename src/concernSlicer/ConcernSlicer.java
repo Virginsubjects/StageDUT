@@ -49,27 +49,20 @@ public class ConcernSlicer {
 				"</html>" 		+ nl;
 	}
 	
-	public static void colorize (File file) throws IOException {
+	public static void colorize (File file, ArrayList<String> list) throws IOException {
 		String filename = file.getAbsolutePath();
 		String codeDir = file.getParentFile().getAbsolutePath()+"\\";
 		String colorized = codeDir + "colorized.html";
-		String concernsDir = codeDir + "concerns\\";
-		
-		/*String names[] = {"SEIRS", "spatial", "multispecies", "matlab",
-				"seirs_spatial", "seirs_species", "species_spatial", "kendrick" };
+		String concernsDir = codeDir + "concerns\\";		
 		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY",
-				"PALEGREEN", "ORANGE", "DARKVIOLET", "LIGHTGRAY" };*/
-		String names[] = {"informatique", "banque-de-données", "documents", "descripteurs","electroniques"}; //Juste pour tester 
-		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY","GREEN"};
-		for (int i=0; i< names.length; ++i) {
-			Path ipath = Paths.get(concernsDir + names[i] + ".txt");
-			addConcern(names[i], colors[i], ipath);
-		}
-		
-		
+				"PALEGREEN", "ORANGE", "DARKVIOLET", "LIGHTGRAY" };
+		int i = 0;
+		for (String s : list) {			
+			Path ipath = Paths.get(concernsDir + s);
+			addConcern(s, colors[i++], ipath);
+		}			
 		Path codePath = Paths.get(filename);
-		Path colorPath = Paths.get(colorized);
-		
+		Path colorPath = Paths.get(colorized);		
 		slice(codePath, colorPath);
 	}
 	
