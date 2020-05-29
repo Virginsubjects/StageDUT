@@ -23,7 +23,7 @@ inexpected outcomings.
  
 ![Overview](https://user-images.githubusercontent.com/56639090/83023498-48963f00-a02d-11ea-9e7f-b1297ad37b0f.png)
 
-- On the left screenshot : using Java Swing :thumbsdown:                                
+- On the left screenshot : using Java Swing (Our GUI) :thumbsdown:                                
 - On the right screenshot : using a regular navigator (Chrome) :thumbsup: 
 
 Even though it seems to be working well in a regular navigator like Chrome, we'll face to this point
