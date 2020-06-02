@@ -54,7 +54,7 @@ public class ConcernSlicer {
 		String codeDir = file.getParentFile().getAbsolutePath()+"\\";
 		String colorized = codeDir + "colorized.html";
 		String concernsDir = codeDir + "concerns\\";		
-		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY",
+		String colors[] = {"YELLOW", "RED","GREEN","GRAY","PINK","CYAN", "MAGENTA", "LIGHTGRAY",
 				"PALEGREEN", "ORANGE", "DARKVIOLET", "LIGHTGRAY" };
 		int i = 0;
 		for (String s : list) {			
@@ -93,7 +93,7 @@ public class ConcernSlicer {
 		 //write(tokensWithConcerns, wcPath, false);
 		
 	}
-	 */
+	*/
 	
 	private static void slice(Path codePath, Path colorPath) throws IOException {
 		List<IToken> tokens = tokenize(codePath,false);
@@ -156,7 +156,8 @@ public class ConcernSlicer {
 	
 	private static ConcernToken assignConcernToToken(IToken token, List<Concern> concerns) {
 		for(Concern concern : concerns) 
-			if (concern.contains(token))
+			if (concern.contains(token) && !token.getString().equals(" ")
+					&& !token.getString().contentEquals("é") && !token.getString().contentEquals("s")) // is only temporally
 				return new ConcernToken(concern.getName(), concern.getColor());
 		return ConcernToken.getGenericCT();
 	}
