@@ -9,10 +9,12 @@ public class Concern implements Iterable<IToken>{
 	private String color;
 	private List<IToken> tokens = new ArrayList<>();
 
-	public Concern(String name, String color, List<IToken> tokens) {
+	public Concern(String name, List<IToken> tokens) {
+		assert(!name.equals(" "));
 		this.name = name;
-		this.color = color;
+		this.color = tokens.get(0).getString();		
 		this.tokens = tokens;
+		this.tokens.remove(0);
 	}
 	
 	public String getName() { 

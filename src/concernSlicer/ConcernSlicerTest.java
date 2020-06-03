@@ -1,8 +1,11 @@
 package concernSlicer;
 import static org.junit.jupiter.api.Assertions.*;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
+
 import tokens.ConcernToken;
 import tokens.NumberToken;
 import tokens.WordToken;
@@ -48,21 +51,12 @@ class ConcernSlicerTest {
 		
 		
 		
-		concerns.add(new Concern("coder", "jaune", tokensWithConcerns));
-		concerns.add(new Concern("factoriser", "rouge", tokensWithConcernsFact));
-		concerns.add(new Concern("git", "vert", tokensWithConcernsGit));
+		concerns.add(new Concern("coder", tokensWithConcerns));
+		concerns.add(new Concern("factoriser", tokensWithConcernsFact));
+		concerns.add(new Concern("git", tokensWithConcernsGit));
 		assertEquals(concerns.size(), 3);	
 		
-		for( Concern c : concerns) {
-			if(c.getName().equals("coder")) 
-					assertEquals(c.getColor(),"jaune");
-			else if(c.getName().contentEquals("factoriser"))
-					assertEquals(c.getColor(),"rouge");
-			else  assertEquals(c.getColor(),"vert");
-		}	
 		
 		List<IToken> res = ConcernSlicer.detectConcerns(tokens, concerns);
 		assertEquals(res.size(), 6);// 5 + 1 (voir methode detectConcerns)
 		
-	}
-}

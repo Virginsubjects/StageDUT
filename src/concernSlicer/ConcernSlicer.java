@@ -1,5 +1,7 @@
 package concernSlicer;
 
+
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -50,17 +52,16 @@ public class ConcernSlicer {
 	}
 	
 	public static void colorize (File file, ArrayList<String> list) throws IOException {
+		
 		String filename = file.getAbsolutePath();
 		String codeDir = file.getParentFile().getAbsolutePath()+"\\";
 		String colorized = codeDir + "colorized.html";
 		String concernsDir = codeDir + "concerns\\";		
-		String colors[] = {"YELLOW", "RED","GREEN","GRAY","PINK","CYAN", "MAGENTA", "LIGHTGRAY",
-				"PALEGREEN", "ORANGE", "DARKVIOLET", "LIGHTGRAY" };
 		int i = 0;
 		for (String s : list) {			
 			Path ipath = Paths.get(concernsDir + s);
-			addConcern(s, colors[i++], ipath);
-		}			
+			addConcern(s, ipath);
+		}
 		Path codePath = Paths.get(filename);
 		Path colorPath = Paths.get(colorized);		
 		slice(codePath, colorPath);
@@ -69,7 +70,7 @@ public class ConcernSlicer {
 	/*public static void main(String[] args) throws IOException {
 		
 		System.out.println("Concern Slicer");
-		
+		getColorList();
 		String codeDir = "C:\\Users\\rober\\OneDrive\\Bureau\\PROJET_STAGE\\";
 		//String concernsDir = codeDir + "concerns\\";
 		String names[] = {"projet-stage", "colorer", "texte", "programme" }; //Juste pour tester 
@@ -92,22 +93,22 @@ public class ConcernSlicer {
 		// List<IToken> tokensWithConcerns = detectConcerns(tokens, concerns);
 		 //write(tokensWithConcerns, wcPath, false);
 		
-	}
-	*/
+	}*/
+	
 	
 	private static void slice(Path codePath, Path colorPath) throws IOException {
 		List<IToken> tokens = tokenize(codePath,false);
 		colorize(tokens, colorPath);
 	}
 
-	private static void addConcern(String name, String color, Path ipath) throws IOException {
+	private static void addConcern(String name, Path ipath) throws IOException {
 		List<IToken> tokens = tokenize(ipath, true);
 		if (trace) {
-			System.out.println("Added concern "+name+ " " + color+ " "+ ipath);
+			//System.out.println("Added concern "+name+ " " + color+ " "+ ipath);
 			for(IToken token : tokens)
 				System.out.println(token);
 		}
-		concerns.add(new Concern(name, color, tokens));
+		concerns.add(new Concern(name, tokens));
 	}
 	
 	public static List<IToken> detectConcerns(List<IToken>  tokens, List<Concern> concerns) {
@@ -148,10 +149,8 @@ public class ConcernSlicer {
 				}
 			}
 			ct.closeColorMark(writer);
-			writer.write(getHTMLEnder());
-			
-		}
-		
+			writer.write(getHTMLEnder());			
+		}		
 	}
 	
 	private static ConcernToken assignConcernToToken(IToken token, List<Concern> concerns) {

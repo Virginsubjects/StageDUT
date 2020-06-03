@@ -37,16 +37,21 @@ class ConcernTest {
 		assertFalse(liste.isEmpty());
 		assertEquals(liste.size(),5);	
 		
-		Concern c = new Concern("stage","red", liste);				
+		Concern c = new Concern("stage", liste);				
 		assertEquals(c.getName(), "stage");
-		assertEquals(c.getColor(), "red");	
+		
 		
 		for(IToken t : liste)	
 			assertTrue(c.contains(t));
 		
 		Iterator<IToken> i = c.iterator();
-		while(i.hasNext() && i.next()!=null)
-			assertEquals(c.getColor(),"red");
+		
+		
+		Concern conc = new Concern("dut", liste);				
+		assertEquals(conc.getName(), "dut");
+		
+		
+		
 		
 		
 		
