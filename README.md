@@ -11,7 +11,9 @@ This line is only suppose to appear in the line numbering branch
 
 When the application starts it lets the user browse the local file system so that he selects a file which will be colorized.
 The directory of this file must contain a concerns folder.
-In the concerns folder each file lists the words of each concern, one per line. However at the top each file, at the very first line, it must contains the name of one color, written in uppercase. This one will be used for all the words attached to this concern.
+In the concerns folder each file lists the words of each concern, one per line. 
+
+However at the top each file, at the very first line, it must contains the name of one color, written in uppercase. This one will be used for all the words attached to this concern.
 
 ## Quick Overview
 
