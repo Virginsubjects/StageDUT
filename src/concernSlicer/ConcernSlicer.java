@@ -1,4 +1,7 @@
 package concernSlicer;
+
+
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -154,16 +157,14 @@ public class ConcernSlicer {
 	
 	private static ConcernToken assignConcernToToken(IToken token, List<Concern> concerns) {
 		for(Concern concern : concerns) 
-			if (concern.contains(token) && !token.getString().equals(" ")
-					&& !token.getString().contentEquals("é") && !token.getString().contentEquals("s")) // is only temporally
+			if (concern.contains(token) && !token.getString().equals(" ")) 
 				return new ConcernToken(concern.getName(), concern.getColor());
 		return ConcernToken.getGenericCT();
 	}
 	
 	private static void writeLineNumber(int n, BufferedWriter writer) throws IOException {
 		new NumberToken(n).write(writer);
-		new CharToken(' ').write(writer);
-		
+		new CharToken(' ').write(writer);	
 	}
 
 	private static void write(List<IToken> tokens, Path outPath, boolean insertEOLs) throws IOException {
