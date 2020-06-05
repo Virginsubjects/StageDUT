@@ -9,13 +9,22 @@ Now lines are numbered and for this the output is now HMTL/CSS
 
 This line is only suppose to appear in the line numbering branch
 
+## How it works
+
 When the application starts it lets the user browse the local file system so that he selects a file which will be colorized.
 The directory of this file must contain a concerns folder.
 In the concerns folder each file lists the words of each concern, one per line. 
 
 However at the top each file, at the very first line, it must contains the name of one color, written in uppercase. This one will be used for all the words attached to this concern.
 
-## Quick Overview
+## Choose up right colors
+
+When using only your navigator to displays html content, you can choose whatever color you want, but unfortunately if you are using GUI not all of them are allowed.
+
+Indeed in most of cases, it's fairly probably that the html content will show up without a color treatement. You must to pay attention what color is choosen, for instance some colors who are actually working well are red, green, grey, yellow, orange and so on. 
+
+
+## Quick overview
 
 When user selects a file, html colorized file shows up on the right from the frame, however
 into this new file where colorization has been carried out, it seems that there would have been some
@@ -30,3 +39,4 @@ inexpected outcomings.
 
 Even though it seems to be working well in a regular navigator like Chrome, we'll face to this point
 and focalize all our attention to fix it, in order to displays correctly in our application.
+
