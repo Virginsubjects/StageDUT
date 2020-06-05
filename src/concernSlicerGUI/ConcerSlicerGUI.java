@@ -32,7 +32,7 @@ public class ConcerSlicerGUI extends JPanel
     public ConcerSlicerGUI() {
         super(new BorderLayout());
         pane = new JEditorPane();
-        pane.setContentType("text/html");
+        pane.setContentType("text/html;charset=UTF-8");
         pane.setPreferredSize(new Dimension(400, 400));
         
         log = new JTextArea(20,10);
@@ -77,7 +77,6 @@ public class ConcerSlicerGUI extends JPanel
 					ConcernSlicer.colorize(file, list);				
 					String codeDir = "file:"+file.getParentFile().getAbsolutePath();				
 					String colorized = codeDir + "\\colorized.html";					
-				  //System.out.println(colorized);
 					pane.setPage(colorized);				
 				  //readTextFile(log,file.getParentFile()+"\\colorized.html");
 				} catch (IOException e1) {
@@ -104,7 +103,6 @@ public class ConcerSlicerGUI extends JPanel
     
     private ArrayList<String> listFiles(File file){
     	ArrayList<String> list = new ArrayList();
-    	String[] s = new String[2];
     	try {
      	   String concernsDir = file.getParentFile().getAbsolutePath() + "\\concerns";
 			    File repFile = new File(concernsDir);
@@ -146,7 +144,7 @@ public class ConcerSlicerGUI extends JPanel
         frame.setVisible(true);
     }
     
-   /* private void readTextFile(JTextArea texte, String fileName) 
+    private void readTextFile(JTextArea texte, String fileName) 
  	{
  		try 
  			{
@@ -164,7 +162,7 @@ public class ConcerSlicerGUI extends JPanel
               texte.setText("Exception cause: "+e);
    		      e.printStackTrace();
   				}		 
-	} */
+	} 
 		 
 
     public static void main(String[] args) {
