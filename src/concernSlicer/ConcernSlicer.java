@@ -1,7 +1,4 @@
 package concernSlicer;
-
-
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
@@ -28,6 +25,8 @@ public class ConcernSlicer {
 	private static List<Concern> concerns = new ArrayList<>();
 	private static String nl = System.lineSeparator();
 	private static boolean trace = false;
+	private static final String CONCERN = "concerns\\";
+	private static final String COLORIZED = "colorized.html";
 	
 	static {
 		NumberFormat nf = NumberFormat.getInstance(Locale.US);
@@ -55,8 +54,8 @@ public class ConcernSlicer {
 		
 		String filename = file.getAbsolutePath();
 		String codeDir = file.getParentFile().getAbsolutePath()+"\\";
-		String colorized = codeDir + "colorized.html";
-		String concernsDir = codeDir + "concerns\\";		
+		String colorized = codeDir + COLORIZED;
+		String concernsDir = codeDir + CONCERN;		
 		int i = 0;
 		for (String s : list) {			
 			Path ipath = Paths.get(concernsDir + s);
