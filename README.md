@@ -30,7 +30,7 @@ When user selects a file, html colorized file shows up on the right from the fra
 into this new file where colorization has been carried out, it seems that there would have been some
 inexpected outcomings.
 
->On the picture down bellow, it show us so far what is going wrong
+>On the picture down bellow, it show us so far what is going wrong (not color treatement because of using unallowed colors)
  
 ![Overview](https://user-images.githubusercontent.com/56639090/83023498-48963f00-a02d-11ea-9e7f-b1297ad37b0f.png)
 
@@ -40,3 +40,8 @@ inexpected outcomings.
 Even though it seems to be working well in a regular navigator like Chrome, we'll face to this point
 and focalize all our attention to fix it, in order to displays correctly in our application.
 
+## Fixing color displays issues
+
+>Using proper colors, it seems that html content is displaying correctly.
+
+![Capture d’écran (69)](https://user-images.githubusercontent.com/56639090/83869388-cd1f4680-a72c-11ea-9ca7-a9796f644545.png)
