@@ -68,36 +68,7 @@ public class ConcernSlicer {
 		Path colorPath = Paths.get(colorized);		
 		slice(codePath, colorPath);
 	}
-	
-	/*public static void main(String[] args) throws IOException {
 		
-		System.out.println("Concern Slicer");
-		getColorList();
-		String codeDir = "C:\\Users\\rober\\OneDrive\\Bureau\\PROJET_STAGE\\";
-		//String concernsDir = codeDir + "concerns\\";
-		String names[] = {"projet-stage", "colorer", "texte", "programme" }; //Juste pour tester 
-		String colors[] = {"YELLOW", "CYAN", "MAGENTA", "LIGHTGRAY"};
-		for (int i=0; i< names.length; ++i) {
-			Path ipath = Paths.get(codeDir + names[i] + ".txt");
-			addConcern(names[i], colors[i], ipath);
-		}
-
-			
-		//Path codePath = Paths.get(codeDir +  "Model3.st");
-		//Path colorPath = Paths.get(codeDir + "Kcolorized.html");
-		Path codePath = Paths.get(codeDir +  "README1.txt");
-		Path colorPath = Paths.get(codeDir + "colorized.html"); 
-
-		
-		slice(codePath, colorPath);
-		
-		 Path wcPath = Paths.get(codeDir + "withConcerns.txt");
-		// List<IToken> tokensWithConcerns = detectConcerns(tokens, concerns);
-		 //write(tokensWithConcerns, wcPath, false);
-		
-	}*/
-	
-	
 	private static void slice(Path codePath, Path colorPath) throws IOException {
 		List<IToken> tokens = tokenize(codePath,false);
 		colorize(tokens, colorPath);
