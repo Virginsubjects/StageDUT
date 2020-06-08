@@ -21,9 +21,15 @@ public class ConcernToken extends Token {
 		writer.write("@"+getWord().charAt(0));
 	}
 	public void openColorMark(BufferedWriter writer) throws IOException {
-		writer.write("<span style=\"background-color: " + color +"\""+ ">");
+		writer.write("<code style=\"background-color: " + color +"\""+ ">");
 	}
 	public void closeColorMark(BufferedWriter writer) throws IOException {
-		writer.write("</span>");
+		writer.write("</code>");
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	public String getColor() {
+		return color;
 	}
 }

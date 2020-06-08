@@ -44,11 +44,11 @@ public class ConcernSlicer {
 			"<title>" + title + " </title>" + nl +
 			"</head>" 			+ nl +
 			"<body>" 			+ nl +
-			"<pre><code>";
+			"<pre>";
 	}
 	
 	private static String getHTMLEnder() {
-		return 	"</code></pre>" + nl +
+		return 	"</pre>" + nl +
 				"</body>" 		+ nl +
 				"</html>" 		+ nl;
 	}
