@@ -43,5 +43,4 @@ and focalize all our attention to fix it, in order to displays correctly in our 
 ## Fixing color displays issues
 
 >Using proper colors, it seems that html content is displaying correctly.
-
-![Capture d’écran (69)](https://user-images.githubusercontent.com/56639090/83869388-cd1f4680-a72c-11ea-9ca7-a9796f644545.png)
+![Capture d’écran (74)](https://user-images.githubusercontent.com/56639090/84264526-a2b0fd00-ab21-11ea-9ed2-3e818ea0d80d.png)
