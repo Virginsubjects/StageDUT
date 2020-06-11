@@ -40,7 +40,16 @@ inexpected outcomings.
 Even though it seems to be working well in a regular navigator like Chrome, we'll face to this point
 and focalize all our attention to fix it, in order to displays correctly in our application.
 
-## Fixing color displays issues
+## Fixing StreamTokenizer issues
 
->Using proper colors, it seems that html content is displaying correctly.
+The StreamTokenizer class takes an input stream and parses it into "tokens", allowing the tokens to be read one at a time. The parsing process is controlled by a table and a number of flags that can be set to various states. 
+
+The stream tokenizer can recognize identifiers, numbers, quoted strings, and various comment styles.
+
+however we've noticed that when a string contains one diacritic sign, this class tends to split it and broke up in several strings, for instance : "ça" which contains "ç" will be split in two strings : "ç", "a", what happened here? 
+
+We was able to fix this issue, therefore now the html page will dislplays correctly, at condition whether using right colors! 
+
+>Indeed Using proper colors, it seems that html content is displaying correctly.
+
 ![Capture d’écran (74)](https://user-images.githubusercontent.com/56639090/84264526-a2b0fd00-ab21-11ea-9ed2-3e818ea0d80d.png)
