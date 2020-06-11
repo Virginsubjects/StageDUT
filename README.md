@@ -46,7 +46,9 @@ The StreamTokenizer class takes an input stream and parses it into "tokens", all
 
 The stream tokenizer can recognize identifiers, numbers, quoted strings, and various comment styles.
 
-however we've noticed that when a string contains one diacritic sign, this class tends to split it and broke up in several strings, for instance : "ça" which contains "ç" will be split in two strings : "ç", "a", what happened here? 
+More about  [Class StreamTokenizer](https://docs.oracle.com/javase/7/docs/api/java/io/StreamTokenizer.html) 
+
+However we've noticed that when a string contains one diacritic sign, this class tends to split it and broke up in several strings, for instance : "ça" which contains "ç" will be split in two strings : "ç", "a", what happened here? 
 
 We was able to fix this issue, therefore now the html page will dislplays correctly, at condition whether using right colors! 
 
