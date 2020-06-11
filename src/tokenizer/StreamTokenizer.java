@@ -111,7 +111,8 @@ public class StreamTokenizer {
          * considered to be alphabetic.
          */
         wordChars('A', 'Z');
-        wordChars('a', 'z');
+        wordChars('a', 'z'); 
+        wordChars('â', 'û');
         // Mikal Ziane 
         // I have removed chars with diacritic signs as they are not supposed
         // to appear in words in the texts I am interested in: matlab and kendrick source code 
