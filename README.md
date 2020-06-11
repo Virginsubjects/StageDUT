@@ -53,3 +53,7 @@ We was able to fix this issue, therefore now the html page will dislplays correc
 >Indeed Using proper colors, it seems that html content is displaying correctly.
 
 ![Capture d’écran (74)](https://user-images.githubusercontent.com/56639090/84264526-a2b0fd00-ab21-11ea-9ed2-3e818ea0d80d.png)
+
+## Authors 
+- __Mikal Ziane__ - *Initial work* -
+- __Roberto Collantes__
