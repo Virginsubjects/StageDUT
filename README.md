@@ -54,8 +54,7 @@ We was able to fix this issue, therefore now the html page will dislplays correc
 
 >Indeed Using proper colors, it seems that html content is displaying correctly.
 
-![Capture d’écran (78)](https://user-images.githubusercontent.com/56639090/84496913-1da71e80-acae-11ea-97b7-9c85ff39f85b.png)
-
+![Capture d’écran (81)](https://user-images.githubusercontent.com/56639090/84497171-84c4d300-acae-11ea-9e55-5e9adfeb908e.png)
 
 ## Authors 
 - __Mikal Ziane__ - *Initial work* -
