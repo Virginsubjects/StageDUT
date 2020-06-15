@@ -5,9 +5,21 @@ The first feature consists in colorizing texts using one color per concern.
 Concerns are specified by a name, a color, a list of tokens.
 The tokens are given in a file, usually one per line but layout is ignored.
 
-Now lines are numbered and for this the output is now HMTL/CSS
+Now lines are numbered and for this the output is now HMTL/CSS.
 
-This line is only suppose to appear in the line numbering branch
+This line is only suppose to appear in the line numbering branch.
+
+## Get started
+
+Syntactic coloration aims to automatically formatting some items from a text or a code, 
+using a specific color, items have upstream been carefully choosen due to their importance 
+and their interest to a concern.    
+
+Thereby highlighted elements from a code allow us to spot more easily program constituents, 
+so that they can be analyzed more efficiently.
+
+His goal, among others,  is a code  legibility improvement.
+
 
 ## How it works
 
