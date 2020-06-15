@@ -15,7 +15,7 @@ Syntactic coloration aims to automatically formatting some items from a text or 
 using a specific color, items have upstream been carefully choosen due to their importance 
 and their interest to a concern.    
 
-Thereby highlighted elements from a code allow us to spot more easily program constituents, 
+Thereby, highlighted elements from a code allow us to spot more easily program constituents, 
 so that they can be analyzed more efficiently.
 
 His goal, among others,  is a code  legibility improvement.
