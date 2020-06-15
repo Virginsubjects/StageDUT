@@ -11,7 +11,7 @@ This line is only suppose to appear in the line numbering branch.
 
 ## Get started
 
-So the main aim of this Java application is to colorate one part from a code, the result will be  a webpage in HTML.
+So the first aim of this Java application is to colorate one part from a code, the result will be  a webpage in HTML.
 Besides, to format its layout and most of all control the colors we'll use CSS.
 
 *Syntactic coloration* aims to automatically formatting some items (tokens) from a text or a code, 
