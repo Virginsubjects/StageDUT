@@ -7,7 +7,7 @@ The tokens are given in a file, usually one per line but layout is ignored.
 
 A token is the smallest element of a program that is meaningful to the compiler.
 
-More about ![Tokens](https://www.geeksforgeeks.org/java-tokens/)
+More about [Tokens](https://www.edureka.co/blog/tokens-in-java/)
 
 Now lines are numbered and for this the output is now HMTL/CSS.
 
