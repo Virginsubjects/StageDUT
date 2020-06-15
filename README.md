@@ -50,7 +50,8 @@ More about  [Class StreamTokenizer](https://docs.oracle.com/javase/7/docs/api/ja
 
 However we've noticed that when a string contains one diacritic sign, this class tends to split it and broke up in several strings, for instance : "ça" which contains "ç" will be split in two strings : "ç", "a", what happened here? 
 
-We was able to fix this issue, therefore now the html page will dislplays correctly, at condition whether using right colors! 
+We was able to fix this issue, therefore now the html page will dislplays correctly, 
+provided you use the right colors! 
 
 >Indeed Using proper colors, it seems that html content is displaying correctly.
 
