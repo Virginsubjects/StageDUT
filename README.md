@@ -5,13 +5,17 @@ The first feature consists in colorizing texts using one color per concern.
 Concerns are specified by a name, a color, a list of tokens.
 The tokens are given in a file, usually one per line but layout is ignored.
 
+A token is the smallest element of a program that is meaningful to the compiler.
+
+More about ![Tokens](https://www.geeksforgeeks.org/java-tokens/)
+
 Now lines are numbered and for this the output is now HMTL/CSS.
 
 This line is only suppose to appear in the line numbering branch.
 
 ## Get started
 
-So the first aim of this Java application is to colorate one part from a code, the result will be  a webpage in HTML.
+So the first aim of this Java application is to colorate differents parts from a code, the result will be  a webpage in HTML.
 Besides, to format its layout and most of all control the colors we'll use CSS.
 
 *Syntactic coloration* aims to automatically formatting some items (tokens) from a text or a code, 
