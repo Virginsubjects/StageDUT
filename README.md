@@ -34,7 +34,7 @@ When the application starts it lets the user browse the local file system so tha
 The directory of this file must contain a concerns folder.
 In the concerns folder each file lists the words of each concern, one per line. 
 
-However at the top each file, at the very first line, it must contains the name of one color, written in uppercase. This one will be used for all the words attached to this concern.
+However at the top each file, at the very first line, it must contains the name of one color. This one will be used for all the words attached to this concern.
 
 ### Choose up right colors
 
