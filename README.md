@@ -36,7 +36,7 @@ In the concerns folder each file lists the words of each concern, one per line.
 
 However at the top each file, at the very first line, it must contains the name of one color, written in uppercase. This one will be used for all the words attached to this concern.
 
-## Choose up right colors
+### Choose up right colors
 
 When using only your navigator to displays html content, you can choose whatever color you want, but unfortunately if you are using GUI not all of them are allowed.
 
