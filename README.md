@@ -40,7 +40,10 @@ However at the top each file, at the very first line, it must contains the name 
 
 When using only your navigator to displays html content, you can choose whatever color you want, but unfortunately if you are using GUI not all of them are allowed.
 
-Indeed in most of cases, it's fairly probably that the html content will show up without a color treatement. You must to pay attention what color is choosen, for instance some colors who are actually working well are red, green, grey, yellow, orange and so on. 
+Indeed in most of cases, it's fairly probably that the html content will show up without a color treatement. You must to pay attention what color is choosen.
+
+We can only use 16 colors, those were defined in the HTML 4.01 specification, only those are working well using our GUI, as  follows (names are defined in this context to be not case-insensitive):
+> White, silver, gray, black, red, maroon, yellow, olive, lime, green, aqua, teal, blue, navy, fuchsia, purple
 
 
 ## Quick overview
