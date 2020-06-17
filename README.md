@@ -26,9 +26,7 @@ using a specific color, items have upstream been carefully choosen due to their 
 and their interest to a concern.    
 
 Thereby, highlighted elements from a code allow us to spot more easily program constituents, 
-so that they can be analyzed more efficiently.
-
-His goal, among others,  is a code  legibility improvement.
+so that they can be analyzed more efficiently. His goal, among others,  is a code  legibility improvement.
 
 
 ## How it works
