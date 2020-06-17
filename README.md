@@ -21,7 +21,7 @@ Besides, to format its layout and most of all control the colors we do not will 
 We'll set colors directly within a generic inline container like HTML **span** element, wich is more suitable than a *div* element, thereby it can be used to group elements for styling purposes, like add colors wich is what are we are looking for.
 Besides an inline element is more flexible and appropriate for use here than a block-level element like *div*.
 
-*Syntactic coloration* aims to automatically formatting some items (tokens) from a text or a code, 
+Furthermore *Syntactic coloration* aims to automatically formatting some items (tokens) from a text or a code, 
 using a specific color, items have upstream been carefully choosen due to their importance 
 and their interest to a concern.    
 
