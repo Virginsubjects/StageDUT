@@ -18,7 +18,7 @@ This line is only suppose to appear in the line numbering branch.
 So the first aim of this Java application is to colorate differents parts from a code, the result will be  a webpage in HTML.
 Besides, to format its layout and most of all control the colors we do not will use CSS, because too much complex and not very usefull in this case.
 
-We'll set colors directly within a generic inline container like HTML **<span>** element, wich is more suitable than a *div* element, thereby it can be used to group elements for styling purposes, like add colors wich is what are we are looking for.
+We'll set colors directly within a generic inline container like HTML **span** element, wich is more suitable than a *div* element, thereby it can be used to group elements for styling purposes, like add colors wich is what are we are looking for.
 Besides an inline element is more flexible and appropriate for use here than a block-level element like *div*.
 
 *Syntactic coloration* aims to automatically formatting some items (tokens) from a text or a code, 
