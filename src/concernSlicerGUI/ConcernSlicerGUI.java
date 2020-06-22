@@ -21,7 +21,7 @@ import concernSlicer.ConcernSlicer;
 
 
 @SuppressWarnings("serial")
-public class ConcerSlicerGUI extends JPanel
+public class ConcernSlicerGUI extends JPanel
                              implements ActionListener{
     static private final String newline = "\n";
     JButton openButton, saveButton;
@@ -29,7 +29,7 @@ public class ConcerSlicerGUI extends JPanel
     JFileChooser fc;
     JEditorPane pane;
     
-    public ConcerSlicerGUI() {
+    public ConcernSlicerGUI() {
         super(new BorderLayout());
         pane = new JEditorPane();
         pane.setContentType("text/html;charset=UTF-8");
@@ -64,7 +64,7 @@ public class ConcerSlicerGUI extends JPanel
 
         //Handle open button action.
         if (e.getSource() == openButton) {
-            int returnVal = fc.showOpenDialog(ConcerSlicerGUI.this);
+            int returnVal = fc.showOpenDialog(ConcernSlicerGUI.this);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
             	ArrayList<String> list;
@@ -89,7 +89,7 @@ public class ConcerSlicerGUI extends JPanel
 
         //Handle save button action.
         } else if (e.getSource() == saveButton) {
-            int returnVal = fc.showSaveDialog(ConcerSlicerGUI.this);
+            int returnVal = fc.showSaveDialog(ConcernSlicerGUI.this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                 //This is where a real application would save the file.
@@ -117,7 +117,7 @@ public class ConcerSlicerGUI extends JPanel
 
     /** Returns an ImageIcon, or null if the path was invalid. */
     protected static ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = ConcerSlicerGUI.class.getResource(path);
+        java.net.URL imgURL = ConcernSlicerGUI.class.getResource(path);
         if (imgURL != null) {
             return new ImageIcon(imgURL);
         } else {
@@ -137,7 +137,7 @@ public class ConcerSlicerGUI extends JPanel
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Add content to the window.
-        frame.add(new ConcerSlicerGUI());
+        frame.add(new ConcernSlicerGUI());
 
         //Display the window.
         frame.pack();

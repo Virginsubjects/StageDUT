@@ -59,4 +59,5 @@ class ConcernSlicerTest {
 		
 		List<IToken> res = ConcernSlicer.detectConcerns(tokens, concerns);
 		assertEquals(res.size(), 6);// 5 + 1 (voir methode detectConcerns)
-		
+	}
+}

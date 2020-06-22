@@ -1,4 +1,5 @@
-/tokenizer/
 /concernSlicer/
-/tokens/
 /concernSlicerGUI/
+/tokenizer/
+/tokens/
+/tokensTests/
