@@ -1,0 +1,10 @@
+MultiSpecies
+species
+ns
+s
+Human
+Bird
+humans
+birds
+human
+bird

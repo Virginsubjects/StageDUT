@@ -1,0 +1,17 @@
+SEIRS
+S
+E
+I
+R
+dSdt
+dEdt
+dIdt
+dRdt
+lambda
+mu
+gamma
+beta
+N
+nu
+sigma
+0.00274
