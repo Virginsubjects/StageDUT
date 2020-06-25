@@ -21,7 +21,7 @@ import concernSlicer.ConcernSlicer;
 
 
 @SuppressWarnings("serial")
-public class ConcernSlicerGUI extends JPanel
+public class ConcerSlicerGUI extends JPanel
                              implements ActionListener{
     static private final String newline = "\n";
     JButton openButton, saveButton;
@@ -29,15 +29,16 @@ public class ConcernSlicerGUI extends JPanel
     JFileChooser fc;
     JEditorPane pane;
     
-    public ConcernSlicerGUI() {
+    public ConcerSlicerGUI() {
         super(new BorderLayout());
         pane = new JEditorPane();
         pane.setContentType("text/html;charset=UTF-8");
         pane.setPreferredSize(new Dimension(400, 400));
         
-        log = new JTextArea(20,10);
+        log = new JTextArea(5,10);
         log.setMargin(new Insets(5,5,5,5));
         log.setEditable(false);
+     
         JScrollPane logScrollPane = new JScrollPane(log);
         JScrollPane paneScrollPane = new JScrollPane(pane);
   
@@ -56,31 +57,34 @@ public class ConcernSlicerGUI extends JPanel
     
         //Add the buttons and the log to this panel. ( + pane )
         add(buttonPanel, BorderLayout.PAGE_START);
-        add(logScrollPane, BorderLayout.CENTER);
-        add(paneScrollPane, BorderLayout.EAST);              
+        add(logScrollPane, BorderLayout.PAGE_END);
+        add(paneScrollPane, BorderLayout.CENTER);              
     }
 
     public void actionPerformed(ActionEvent e) {
 
         //Handle open button action.
         if (e.getSource() == openButton) {
-            int returnVal = fc.showOpenDialog(ConcernSlicerGUI.this);
+            int returnVal = fc.showOpenDialog(ConcerSlicerGUI.this);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
             	ArrayList<String> list;
+            	String msg ="";
                 File file = fc.getSelectedFile();
                 //This is where a real application would open the file.
                 log.append("Opening: " + file.getAbsolutePath() + "." + newline);       
                 list = listFiles(file);
                            
                 try {
-					ConcernSlicer.colorize(file, list);				
+                			msg = ConcernSlicer.colorize(file, list);				
 					String codeDir = "file:"+file.getParentFile().getAbsolutePath();				
-					String colorized = codeDir + "\\colorized.html";					
-					pane.setPage(colorized);				
-				  //readTextFile(log,file.getParentFile()+"\\colorized.html");
+					String colorized = codeDir + "\\colorized.html";
+					System.out.println(colorized + ", Liste d'erreurs:"+ newline +msg + newline);
+					pane.setPage(colorized);	
+					log.append("Liste d'erreurs:"+ newline+"."+msg+ newline);
+				  // readTextFile(log,file.getParentFile()+"\\colorized.html");
 				} catch (IOException e1) {
-					log.append("IOException : "+e1.getMessage()+ newline);
+					log.append("IOException : "+e1.getMessage()+ newline  );
 				}
             } else {
                 log.append("Open command cancelled by user." + newline);
@@ -89,10 +93,14 @@ public class ConcernSlicerGUI extends JPanel
 
         //Handle save button action.
         } else if (e.getSource() == saveButton) {
-            int returnVal = fc.showSaveDialog(ConcernSlicerGUI.this);
+            int returnVal = fc.showSaveDialog(ConcerSlicerGUI.this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
-                //This is where a real application would save the file.
+                             
+                String codeDir = "file:"+file.getParentFile().getAbsolutePath();
+                String colorized = codeDir + "\\colorized.html";      
+				
+              //This is where a real application would save the file.
                 log.append("Saving: " + file.getName() + "." + newline);
             } else {
                 log.append("Save command cancelled by user." + newline);
@@ -117,7 +125,7 @@ public class ConcernSlicerGUI extends JPanel
 
     /** Returns an ImageIcon, or null if the path was invalid. */
     protected static ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = ConcernSlicerGUI.class.getResource(path);
+        java.net.URL imgURL = ConcerSlicerGUI.class.getResource(path);
         if (imgURL != null) {
             return new ImageIcon(imgURL);
         } else {
@@ -137,7 +145,7 @@ public class ConcernSlicerGUI extends JPanel
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Add content to the window.
-        frame.add(new ConcernSlicerGUI());
+        frame.add(new ConcerSlicerGUI());
 
         //Display the window.
         frame.pack();
@@ -162,8 +170,7 @@ public class ConcernSlicerGUI extends JPanel
               texte.setText("Exception cause: "+e);
    		      e.printStackTrace();
   				}		 
-	} 
-		 
+	} 		 
 
     public static void main(String[] args) {
 		Arrays.sort(args);
