@@ -1,3 +1,4 @@
+Yellow
 SEIRS
 S
 E
