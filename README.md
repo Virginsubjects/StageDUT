@@ -43,11 +43,6 @@ When using only your navigator to displays html content, you can choose whatever
 
 Indeed in most of cases, it's fairly probably that the html content will show up without a color treatement. You must to pay attention what color is choosen.
 
-We can only use 16 colors, those were defined in the HTML 4.01 specification, only those are working well using our GUI, as  follows (names are defined in this context to be not case-insensitive):
-
-![Capture d’écran (85)](https://user-images.githubusercontent.com/56639090/84779404-a68ec480-afe4-11ea-8144-12d9dadbac2d.png)
-
-
 ## Quick overview
 
 When user selects a file, html colorized file shows up on the right from the frame, however
