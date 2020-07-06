@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -30,6 +31,21 @@ public class ConcernSlicer {
 	private static boolean trace = false;
 	private static final String CONCERN = "concerns\\";
 	private static final String COLORIZED = "colorized.html";
+	private static final String[] colors = {"INDIANRED","LIGHTCORAL", "SALMON", "DARKSALMON", "LIGHTSALMON", "CRIMSON", "RED", "FIREBRICK", "DARKRED" ,"PINK" ,"LIGHTPINK", "HOTPINK", "DEEPPINK"
+			,"MEDIUMVIOLETRED",  "PALEVIOLETRED", "LIGHTSALMON" ,"CORAL", "TOMATO", "ORANGERED", "DARKORANGE" ,"ORANGE", "GOLD", "YELLOW", "LIGHTYELLOW", "LEMONCHIFFON"
+			,"LIGHTGOLDENRODYELLOW", "PAPAYAWHIP", "MOCCASIN", "PEACHPUFF", "PALEGOLDENROD", "KHAKI", "DARKKHAKI", "LAVENDER", "THISTLE", "PLUM", "VIOLET", "ORCHID"
+			,"FUCHSIA", "MAGENTA", "MEDIUMORCHID", "MEDIUMPURPLE", "REBECCAPURPLE", "BLUEVIOLET", "DARKVIOLET", "DARKORCHID", "DARKMAGENTA", "PURPLE", "INDIGO"
+			,"SLATEBLUE", "DARKSLATEBLUE", "MEDIUMSLATEBLUE", "GREENYELLOW","CHARTREUSE","LAWNGREEN", "LIME", "LIMEGREEN", "PALEGREEN", "LIGHTGREEN" 
+			,"MEDIUMSPRINGGREEN", "SPRINGGREEN", "MEDIUMSEAGREEN", "SEAGREEN", "FORESTGREEN", "GREEN", "DARKGREEN", "YELLOWGREEN", "OLIVEDRAB", "OLIVE"
+			,"DARKOLIVEGREEN", "MEDIUMAQUAMARINE", "DARKSEAGREEN", "LIGHTSEAGREEN", "DARKCYAN", "TEAL", "AQUA", "CYAN", "LIGHTCYAN", "PALETURQUOISE", "AQUAMARINE"
+			,"TURQUOISE", "MEDIUMTURQUOISE", "DARKTURQUOISE", "CADETBLUE", "STEELBLUE", "LIGHTSTEELBLUE", "POWDERBLUE", "LIGHTBLUE", "SKYBLUE",  "LIGHTSKYBLUE"
+			,"DEEPSKYBLUE", "DODGERBLUE", "CORNFLOWERBLUE", "MEDIUMSLATEBLUE", "ROYALBLUE", "BLUE", "MEDIUMBLUE", "DARKBLUE", "NAVY", "MIDNIGHTBLUE", "CORNSILK"
+			,"BLANCHEDALMOND", "BISQUE", "NAVAJOWHITE", "WHEAT", "BURLYWOOD", "TAN", "ROSYBROWN", "SANDYBROWN", "GOLDENROD", "DARKGOLDENROD", "PERU", "CHOCOLATE"
+			,"SADDLEBROWN", "SIENNA", "BROWN", "MAROON", "WHITE", "SNOW", "HONEYDEW", "MINTCREAM", "AZURE", "ALICEBLUE", "GHOSTWHITE", "WHITESMOKE", "SEASHELL"
+			,"BEIGE", "OLDLACE", "FLORALWHITE", "IVORY", "ANTIQUEWHITE", "LINEN", "LAVENDERBLUSH", "MISTYROSE", "GAINSBORO", "LIGHTGRAY", "SILVER", "DARKGRAY" 
+			,"GRAY", "DIMGRAY", "LIGHTSLATEGRAY","SLATEGRAY", "DARKSLATEGRAY", "BLACK"
+};
+	private static String message = "";
 	
 	static {
 		NumberFormat nf = NumberFormat.getInstance(Locale.US);
@@ -44,22 +60,21 @@ public class ConcernSlicer {
 			"<title>" + title + " </title>" + nl +
 			"</head>" 			+ nl +
 			"<body>" 			+ nl +
-			"<pre>";
+			"<pre><code>";
 	}
 	
 	private static String getHTMLEnder() {
-		return 	"</pre>" + nl +
+		return 	"</code></pre>" + nl +
 				"</body>" 		+ nl +
 				"</html>" 		+ nl;
 	}
 	
-	public static void colorize (File file, ArrayList<String> list) throws IOException {
+	public static String colorize (File file, ArrayList<String> list) throws IOException {
 		
 		String filename = file.getAbsolutePath();
 		String codeDir = file.getParentFile().getAbsolutePath()+"\\";
 		String colorized = codeDir + COLORIZED;
 		String concernsDir = codeDir + CONCERN;		
-		int i = 0;
 		for (String s : list) {			
 			Path ipath = Paths.get(concernsDir + s);
 			addConcern(s, ipath);
@@ -67,21 +82,36 @@ public class ConcernSlicer {
 		Path codePath = Paths.get(filename);
 		Path colorPath = Paths.get(colorized);		
 		slice(codePath, colorPath);
+		return message == ""? "Pas d'erreur dans le choix des couleurs" : message;
 	}
 		
 	private static void slice(Path codePath, Path colorPath) throws IOException {
 		List<IToken> tokens = tokenize(codePath,false);
 		colorize(tokens, colorPath);
 	}
-
+	
+	private static boolean contains(String color) {
+		boolean trouv = false;
+		for(int i = 0 ; i < colors.length ; i++) {
+			if(color.toUpperCase().equals(colors[i])) {
+				trouv = true;
+			break;
+			}
+		}		
+		return trouv;		
+	}	
+	
 	private static void addConcern(String name, Path ipath) throws IOException {
-		List<IToken> tokens = tokenize(ipath, true);
+		List<IToken> tokens = tokenize(ipath, true);	
+		
+		if(!contains(tokens.get(0).getString()))
+			message += nl+"Mauvais choix de couleur dans le fichier : "+ipath.getFileName().toString()+
+					", le "+tokens.get(0).getString()+" ne fait pas partie des couleurs autorisées";
 		if (trace) {
 			//System.out.println("Added concern "+name+ " " + color+ " "+ ipath);
-			for(IToken token : tokens)
-				System.out.println(token);
+			;
 		}
-		concerns.add(new Concern(name, tokens));
+		concerns.add(new Concern(name, tokens));				
 	}
 	
 	public static List<IToken> detectConcerns(List<IToken>  tokens, List<Concern> concerns) {
@@ -118,7 +148,7 @@ public class ConcernSlicer {
 					token.write(writer);
 					writeLineNumber(i++, writer);				
 				}else {
-				token.write(writer);	
+				token.write(writer);
 				}
 			}
 			ct.closeColorMark(writer);
