@@ -27,20 +27,17 @@ public class ConcerSlicerGUI extends JPanel
     JButton openButton, saveButton;
     JTextArea log;
     JFileChooser fc;
-    JEditorPane pane;
     
     public ConcerSlicerGUI() {
         super(new BorderLayout());
-        pane = new JEditorPane();
-        pane.setContentType("text/html;charset=UTF-8");
-        pane.setPreferredSize(new Dimension(400, 400));
         
-        log = new JTextArea(5,10);
+        
+        log = new JTextArea(15,15);
         log.setMargin(new Insets(5,5,5,5));
         log.setEditable(false);
      
         JScrollPane logScrollPane = new JScrollPane(log);
-        JScrollPane paneScrollPane = new JScrollPane(pane);
+      
   
        //Create a file chooser
         fc = new JFileChooser();
@@ -57,8 +54,8 @@ public class ConcerSlicerGUI extends JPanel
     
         //Add the buttons and the log to this panel. ( + pane )
         add(buttonPanel, BorderLayout.PAGE_START);
-        add(logScrollPane, BorderLayout.PAGE_END);
-        add(paneScrollPane, BorderLayout.CENTER);              
+        add(logScrollPane, BorderLayout.CENTER);
+             
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -78,9 +75,7 @@ public class ConcerSlicerGUI extends JPanel
                 try {
                 	msg = ConcernSlicer.colorize(file, list);				
 					String codeDir = "file:"+file.getParentFile().getAbsolutePath();				
-					String colorized = codeDir + "\\colorized.html";
-					//System.out.println(colorized + ", Liste d'erreurs:"+ newline +msg + newline);
-					pane.setPage(colorized);	
+					String colorized = codeDir + "\\colorized.html";				
 					log.append(newline+"Liste d'erreurs:"+ newline+"."+msg+ newline);
 				   // readTextFile(log,file.getParentFile()+"\\colorized.html");
 				} catch (IOException e1) {
