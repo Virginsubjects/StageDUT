@@ -28,7 +28,6 @@ and their interest to a concern.
 Thereby, highlighted elements from a code allow us to spot more easily program constituents, 
 so that they can be analyzed more efficiently. His goal, among others,  is a code  legibility improvement.
 
-
 ## How it works
 
 When the application starts it lets the user browse the local file system so that he selects a file which will be colorized.
@@ -39,25 +38,11 @@ However at the top each file, at the very first line, it must contains the name 
 
 ### Choose up right colors
 
-When using only your navigator to displays html content, you can choose whatever color you want, but unfortunately if you are using GUI not all of them are allowed.
-
-Indeed in most of cases, it's fairly probably that the html content will show up without a color treatement. You must to pay attention what color is choosen.
+When using only your navigator to displays html content, you can choose whatever color you want, however all modern browsers support only the following 140 color names : [click here to see them](https://htmlcolorcodes.com/color-names/) 
 
 ## Quick overview
 
-When user selects a file, html colorized file shows up on the right from the frame, however
-into this new file where colorization has been carried out, it seems that there would have been some
-inexpected outcomings.
-
->On the picture down bellow, it show us so far what is going wrong (not color treatement because of using unallowed colors)
- 
-![Overview](https://user-images.githubusercontent.com/56639090/83023498-48963f00-a02d-11ea-9e7f-b1297ad37b0f.png)
-
-- On the left screenshot : using Java Swing (Our GUI) :thumbsdown:                                
-- On the right screenshot : using a regular navigator (Chrome) :thumbsup: 
-
-Even though it seems to be working well in a regular navigator like Chrome, we'll face to this point
-and focalize all our attention to fix it, in order to displays correctly in our application.
+When user selects a file, the colorized html file address shows up on the left from the frame whether everything has been carried out rightly or a error message indicates you what is the problem source.
 
 ## Fixing StreamTokenizer issues
 
