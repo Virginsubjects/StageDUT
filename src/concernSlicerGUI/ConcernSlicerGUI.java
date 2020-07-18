@@ -22,7 +22,7 @@ import concernSlicer.ConcernSlicer;
 
 
 @SuppressWarnings("serial")
-public class ConcerSlicerGUI extends JPanel
+public class ConcernSlicerGUI extends JPanel
                              implements ActionListener{
     static private final String newline = "\n";
     JButton openButton, saveButton;
@@ -36,7 +36,7 @@ public class ConcerSlicerGUI extends JPanel
     JTextField tfCon;
     File file ;
       
-    public ConcerSlicerGUI() {
+    public ConcernSlicerGUI() {
         super(new BorderLayout());
         
         log = new JTextArea(20,20);
@@ -127,7 +127,7 @@ public class ConcerSlicerGUI extends JPanel
 
         //Handle open button action.
         if (e.getSource() == openButton) {
-            int returnVal = fc.showOpenDialog(ConcerSlicerGUI.this);
+            int returnVal = fc.showOpenDialog(ConcernSlicerGUI.this);
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
             	ArrayList<String> list;
@@ -155,7 +155,7 @@ public class ConcerSlicerGUI extends JPanel
 
         //Handle save button action.
         } else if (e.getSource() == saveButton) {
-            int returnVal = fc.showSaveDialog(ConcerSlicerGUI.this);
+            int returnVal = fc.showSaveDialog(ConcernSlicerGUI.this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
                              
@@ -223,7 +223,7 @@ public class ConcerSlicerGUI extends JPanel
 
     /** Returns an ImageIcon, or null if the path was invalid. */
     protected static ImageIcon createImageIcon(String path) {
-        java.net.URL imgURL = ConcerSlicerGUI.class.getResource(path);
+        java.net.URL imgURL = ConcernSlicerGUI.class.getResource(path);
         if (imgURL != null) {
             return new ImageIcon(imgURL);
         } else {
@@ -244,7 +244,7 @@ public class ConcerSlicerGUI extends JPanel
        // frame.setSize(new Dimension(800,400));
         
        
-        frame.add(new ConcerSlicerGUI());
+        frame.add(new ConcernSlicerGUI());
 
         //Display the window.
         frame.pack();

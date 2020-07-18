@@ -1,2 +1,4 @@
 .project
 *.class
+/resources/colorized.html
+/resources/Model3.st
